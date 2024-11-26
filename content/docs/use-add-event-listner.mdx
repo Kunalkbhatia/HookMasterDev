@@ -1,0 +1,34 @@
+---
+title: useAddEventListner
+description: Subscribes to events of a given element with a ref
+---
+
+
+## Usage
+
+`useAddEventListener` adds a given event listener to an element to which `ref` is assigned.
+After the component is unmounted, the listener is automatically removed.
+
+```js
+import { useAddEventListner } from 'hook-master';
+
+function Demo() {
+  const [count, setCount] = useState(0);
+  const increment = useCallback(() => setCount((count) => count + 1), []);
+  const ref = useAddEventListener('click', increment);
+  return <button ref={ref}>Button clicks: {count}</button>;
+}
+```
+
+## Definition
+
+```tsx
+function useAddEventListener<
+  K extends keyof HTMLElementEventMap,
+  T extends HTMLElement = any,
+>(
+  type: K,
+  listener: (this: HTMLDivElement, ev: HTMLElementEventMap[K]) => any,
+  options?: boolean | AddEventListenerOptions
+): MutableRefObject<T>;
+```
