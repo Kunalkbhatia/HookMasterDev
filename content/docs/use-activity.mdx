@@ -1,0 +1,50 @@
+---
+title: useActivity
+description: Detects if the user is idle or not on the page
+---
+
+
+## Usage
+
+`use-idle` detects if user does nothing for a given time in ms:
+
+```js
+import { useActivity } from 'hook-master';
+
+function Demo() {
+  const idle = useActivity(2000);
+  return <div>Current state: {idle ? 'idle' : 'not idle'}</div>;
+}
+```
+
+
+## Custom events
+
+By default, the hook will listen to `keypress`, `mousemove`, `touchmove`, `click` and `scroll` events to set idle status.
+To change that, provide a list of events in the `options` argument:
+
+```js
+import { useActivity } from 'hook-master';
+
+function Demo() {
+  const idle = useActivity(2000, { events: ['click', 'touchstart'] });
+  return <div>Current state: {idle ? 'idle' : 'not idle'}</div>;
+}
+```
+
+
+## Initial state
+
+By default, the hook will return an idle state.
+To change that, provide an initial state value in the `options` argument
+
+
+### Definition
+
+```tsx
+function useActivity(
+  timeout: number,
+  options?: Partial<{ events: string[]; initialState: boolean }>
+): boolean;
+```
+
