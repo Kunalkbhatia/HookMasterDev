@@ -1,0 +1,48 @@
+---
+title: useCounter    
+description: Increments/decrements state within given range
+
+---
+## Usage
+
+```tsx
+import { useCounter } from 'hook-master';
+
+function Demo() {
+  const [count, handlers] = useCounter(0, { min: 0, max: 10 });
+
+  return (
+    <>
+      <div>Count: {count}</dov>
+      <div classname="flex justify-center gap-1">
+        <button onClick={handlers.increment}>Increment</button>
+        <button onClick={handlers.decrement}>Decrement</button>
+        <button onClick={handlers.reset}>Reset</button>
+        <button onClick={() => handlers.set(5)}>Set 5</button>
+      </div>
+    </>
+  );
+}
+```
+
+## Definition
+
+```tsx
+function useCounter(
+  initialValue?: number,
+  options?: Partial<{
+    min: number;
+    max: number;
+  }>
+): [
+  number,
+  {
+    increment: () => void;
+    incrementBy: (value: number) => void;
+    decrement: () => void;
+    decrementBy: (value: number) => void;
+    set: (value: number) => void;
+    reset: () => void;
+  },
+];
+```
