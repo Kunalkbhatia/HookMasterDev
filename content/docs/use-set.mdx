@@ -1,0 +1,39 @@
+---
+title: useSet
+description: A hook that provides a reactive Set instance with enhanced methods to trigger re-renders on updates
+---
+
+## Usage
+
+`useSet` return [Set](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Set).
+The `useSet` hook provides a reactive `Set` instance. It overrides the `add`, `clear`, and `delete` methods to ensure the component re-renders when the map is updated. The hook is initialized with an optional array values of same type.
+
+
+
+```tsx
+import { useSet } from 'hook-master-react';
+
+function Demo() {
+  const set = useSet<number>([1, 2, 3]);
+
+  return (
+    <div>
+      <p>Set entries:</p>
+      <ul>
+        {Array.from(set.values()).map((value) => (
+          <li key={value}>{value}</li>
+        ))}
+      </ul>
+      <button onClick={() => set.add(4)}>Add 4</button>
+      <button onClick={() => set.delete(2)}>Remove 2</button>
+      <button onClick={() => set.clear()}>Clear Set</button>
+    </div>
+  );
+}
+```
+
+## Definition
+
+```tsx
+function useSet<T>(values?: T[]): Set<T>;
+```
