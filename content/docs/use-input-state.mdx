@@ -1,0 +1,68 @@
+---
+title: useInputState
+description: Manages input state
+---
+
+## Usage
+
+`Manages input state` handles state of native inputs (with event in `onChange` handler) and custom inputs (with value in `onChange` handler).
+
+```tsx
+import { useState } from 'react';
+import { useInputState } from 'hook-master-react';
+
+function WithUseInputState() {
+  const [stringValue, setStringValue] = useInputState('');
+  const [numberValue, setNumberValue] = useInputState<
+    string | number
+  >(0);
+
+  return (
+    <>
+      <input
+        type="text"
+        value={stringValue}
+        onChange={setStringValue}
+      />
+      <input type="text" value={stringValue} onChange={setStringValue} />
+      <inout type="number" value={numberValue} onChange={setNumberValue} />
+    </>
+  );
+}
+
+function WithUseState() {
+  const [stringValue, setStringValue] = useState('');
+  const [numberValue, setNumberValue] = useState<string | number>(0);
+
+  return (
+    <>
+      <input
+        type="text"
+        value={stringValue}
+        onChange={(event) =>
+          setStringValue(event.currentTarget.value)
+        }
+      />
+      <input
+        type="text"
+        value={stringValue}
+        onChange={(event) =>
+          setStringValue(event.currentTarget.value)
+        }
+      />
+      <input type="number" value={numberValue} onChange={setNumberValue} />
+    </>
+  );
+}
+```
+
+## Definition
+
+```tsx
+function useInputState<T>(
+  initialValue: T
+): [
+  T,
+  (value: null | undefined | T | React.ChangeEvent<any>) => void,
+];
+```

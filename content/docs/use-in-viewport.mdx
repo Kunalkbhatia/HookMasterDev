@@ -1,0 +1,29 @@
+---
+title: useInViewport
+description: Detects if element is in the viewport
+---
+
+## Usage
+
+`useInViewport` is a hook that checks whether a element is visible in the viewport:
+
+```tsx
+import { useInViewport } from 'hook-master-react';
+
+function Demo() {
+  const { ref, inViewport } = useInViewport();
+  return (
+    <>
+      <div style={{ textAlign: "center"}}>{inViewport ? 'Element is visible' : 'Scroll to see an Element'}</div>
+      <div style={{ height: "64px", overflow: 'scroll' }}>
+        <div style={{ height: "128px"}}></div>
+        <div ref={ref} style={{ height: "64px", padding: "8px", backgroundColor: "blue"}}>
+          <div style={{ textAlign: "center", color: 'white' }}>
+            An Element
+          </div>
+        </div>
+      </div>
+    </>
+  );
+}
+```

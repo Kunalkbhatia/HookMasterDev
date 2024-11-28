@@ -1,0 +1,26 @@
+---
+title: usePageLeft
+description: Calls given function when the mouse leaves the page
+---
+
+
+## Usage
+
+`usePageLeft` calls given function when mouse leaves the page:
+
+```tsx
+import { useState } from 'react';
+import { usePageLeft } from 'hook-master-react';
+
+function Demo() {
+  const [count, setCount] = useState(0);
+  usePageLeft(() => setLeftsCount((p) => p + 1));
+  return <div>Mouse left the page {count} times</div>;
+}
+```
+
+## Definition
+
+```tsx
+function usePageLeft(onPageLeft: () => void): void;
+```

@@ -1,0 +1,28 @@
+---
+title: useIsHovered
+description: Detects if given element is hovered
+---
+
+## Usage
+
+```tsx
+import { useIsHovered } from 'hook-master-react';
+
+function Demo() {
+  const { hovered, ref } = useIsHovered();
+  return (
+    <div ref={ref}>
+      {hovered ? 'I am hovered' : 'Hover on me'}
+    </div>
+  );
+}
+```
+
+## Definition
+
+```tsx
+function useIsHovered<T extends HTMLElement = HTMLDivElement>(): {
+  ref: React.RefObject<T>;
+  hovered: boolean;
+};
+```

@@ -1,0 +1,29 @@
+---
+title: useIsMobile
+description: Detects if the screen width is below a defined mobile breakpoint.
+---
+
+## Usage
+
+The `useIsMobile` hook determines if the screen width is below a defined mobile breakpoint. It listens for changes in the viewport size and returns a boolean indicating whether the current device is considered mobile.
+
+
+```tsx
+import { useIsMobile } from 'hook-master-react';
+
+function Demo() {
+  const isMobile = useIsMobile();
+
+  return (
+    <div>
+      <p>{isMobile ? 'You are on a mobile device.' : 'You are on a desktop device.'}</p>
+    </div>
+  );
+}
+```
+
+## Definition
+
+```tsx
+function useIsMobile(): boolean;
+```
