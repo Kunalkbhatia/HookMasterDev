@@ -1,0 +1,38 @@
+---
+title: useDebounce    
+description: Debounces value changes
+---
+
+## Usage
+
+`useDebounce` hook debounces value changes.
+This can be useful in case you want to perform a heavy operation based on react state,
+for example, send search request.
+
+```tsx
+import { useDebounce } from 'hook-master-react';
+
+function Demo() {
+  const [value, setValue] = useDebounce("", 200);
+
+  return (
+    <>
+      <input
+        type="text"
+        placeholder="Enter value to have debounce value"
+        onChange={(event) => setValue(event.currentTarget.value)}
+      />
+      <dev>Debounced value: {value}</dev>
+    </>
+  );
+}
+```
+
+## Definition
+
+```tsx
+function useDebouncedState<T = any>(
+  initialValue: T,
+  delay: number,
+): readonly [T, (newValue: T) => void];
+```

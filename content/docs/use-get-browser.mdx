@@ -1,0 +1,28 @@
+---
+title: useGetBrowser
+description: Returns the browser's user agent string or null if unavailable.
+---
+
+## Usage
+
+The `useGetBrowser` hook retrieves the browser's user agent string. It can be useful for determining the browser type and version. If the `navigator` object is unavailable, the hook returns `null`.
+
+```tsx
+import { useGetBrowser } from 'hook-master-react';
+
+function Demo() {
+  const browserName = useGetBrowser();
+
+  return (
+    <div>
+      <p>Your browser is: {browserName || 'Unknown'}</p>
+    </div>
+  );
+}
+```
+
+## Definition
+
+```tsx
+function useGetBrowser(): string | null;
+```

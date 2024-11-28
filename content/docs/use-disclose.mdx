@@ -1,0 +1,77 @@
+---
+title: useDisclose    
+description: Manages boolean state, provides open, close and toggle handlers, can be used with modals, drawers, popover etc.
+
+---
+
+## Usage
+
+`useDisclose` hook manages boolean state. It provides `open`, `close` and `toggle` handlers
+and accepts optional `onOpen` and `onClose` callbacks. It can be used to manage controlled modals,
+popovers and other similar components:
+
+```tsx
+import { useDisclose } from 'hook-master-react';
+
+function Demo() {
+  const [opened, handlers] = useDisclose(false);
+
+  // Sets opened to true
+  handlers.open();
+
+  // Sets opened to false
+  handlers.close();
+
+  // Toggles the state of opened
+  handlers.toggle();
+}
+```
+
+## Callbacks
+
+`onOpen` and `onClose` callbacks functions are called when opened state changes:
+
+```tsx
+import { useDisclose } from 'hook-master-react';
+
+function Demo() {
+  const [opened, handlers] = useDisclose(false, {
+    onOpen: () => console.log('I am opened'),
+    onClose: () => console.log('I am closed'),
+  });
+
+  // Calls onOpen callback and sets opened to true
+  handlers.open();
+
+  // Does nothing, opened is already true
+  handlers.open();
+
+  // Calls onClose callback and sets opened to false
+  handlers.close();
+
+  // Does nothing, opened is already false
+  handlers.close();
+
+  // Calls onOpen or onClose depending on next state
+  handlers.toggle();
+}
+```
+
+## Definition
+
+```tsx
+function useDisclose(
+  initialState: boolean,
+  callbackFns?: {
+    onOpen?(): void;
+    onClose?(): void;
+  }
+): [
+  boolean,
+  {
+    open: () => void;
+    close: () => void;
+    toggle: () => void;
+  },
+];
+```

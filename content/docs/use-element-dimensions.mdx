@@ -1,0 +1,48 @@
+---
+title: useElementDimensions    
+description: Returns element width and height and observes changes with ResizeObserver on which given red is attached
+
+---
+
+## Usage
+
+```tsx
+import { useElementDimensions } from 'hook-master-react';
+
+function Demo() {
+  const { ref, width, height } = useElementDimensions();
+
+  return (
+    <>
+      <textarea ref={ref} style={{ width: "400px", height: "150px" }} />
+      <div>Width: {width}, height: {height}</div>
+    </>
+  );
+}
+```
+
+## API
+
+`useElementDimensions` returns a `ref` object that should be passed to the observed element, and the element's `height` and `width`.
+On the first render (as well as during SSR), or when no element is being observed, `width` and `height` properties are equal to `0`.
+
+```tsx
+import { useElementDimensions } from 'hook-master-react';
+
+const { ref, width, height } = useElementDimensions();
+```
+
+## Definition
+
+
+```tsx
+type ObserverRect = Omit<DOMRectReadOnly, 'toJSON'>;
+
+function useResizeObserver<T extends HTMLElement = any>(
+  options?: ResizeObserverOptions
+): readonly [React.RefObject<T>, ObserverRect];
+```
+
+
+#### Please note 
+This hook is extended on another hook called `useResizeObserver`. To know more you can read the source code of `useElementDimensions`.

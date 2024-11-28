@@ -1,0 +1,35 @@
+---
+title: useGetOS
+description: Detects and returns operating system
+---
+
+## Usage
+
+`useGetOS` returns user's operating system. Possible values are: `undetermined`, `macos`, `ios`, `windows`, `android`, `linux`.
+If the OS cannot be identified, for example, during server side rendering `undetermined` will be returned.
+
+
+
+## OS type
+
+You can import `OS` union type from `hook-master-react`:
+
+```tsx
+import type { OS } from 'hook-master-react';
+
+// OS type is 'undetermined' | 'macos' | 'ios' | 'windows' | 'android' | 'linux'
+```
+
+## Definition
+
+```tsx
+function getOS(options?: {
+  getValueInEffect: boolean;
+}):
+  | 'undetermined'
+  | 'macos'
+  | 'ios'
+  | 'windows'
+  | 'android'
+  | 'linux';
+```
