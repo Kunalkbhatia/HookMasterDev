@@ -8,7 +8,7 @@ description: Manages your array state
 `useArrayState` provides an API to work with array state:
 
 ```tsx
-import { useArrayState } from 'hook-master';
+import { useArrayState } from 'hook-master-react';
 
 const [values, handlers] = useArrayState([{ a: 1 }]);
 
@@ -89,7 +89,7 @@ The hook provides handlers to work with array data:
 - `filter` - filter values with callback function
 
 
-## useArrayState type
+## UseArrayStateFns type
 
 `hook-master` package exports `UseArrayStateFns`. It is a generic type
 that contains all handlers from `useArrayState` hook. It can be used to type
@@ -123,32 +123,13 @@ export interface UseArrayStateFns<T> {
 }
 ```
 
-The type is useful when you want to pass `useArrayState` handlers to child components
-as a prop:
-
-```tsx
-import { UseArrayStateFns } from 'hook-master';
-
-interface Props {
-  handlers: UseArrayStateFns<string>;
-}
-
-function Demo({ handlers }: Props) {
-  return (
-    <button type="button" onClick={() => handlers.append('hello')}>
-      Append hello
-    </button>
-  );
-}
-```
-
 ## Set item type
 
 By default, `useArrayState` will use type from `initialValues`.
 If you call the hook with an empty array, you must specify item type:
 
 ```tsx
-import { useArrayState } from 'hook-master';
+import { useArrayState } from 'hook-master-react';
 
 useArrayState(['hello']); // ok, item type is string
 useArrayState([]); // not ok, item type is any
