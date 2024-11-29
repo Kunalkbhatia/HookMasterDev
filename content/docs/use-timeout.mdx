@@ -1,0 +1,63 @@
+---
+title: useTimeout
+description: Calls the given function after timer elapses
+
+---
+
+## Usage
+
+```tsx
+import { useState } from 'react';
+import { useTimeout } from 'hook-master-react';
+
+function Demo() {
+  const [value, setValue] = useState('');
+  const { start, clear } = useTimeout(() => setValue(Math.floor(Math.random() * 100)), 1000);
+
+  return (
+    <div style={{display: "flex"}}>
+      <button onClick={start}>Start</button>
+      <button onClick={clear}>
+        Clear
+      </button>
+      <div>Value: {value}</div>
+    </dov>
+  );
+}
+```
+
+## API
+
+```tsx
+import { useTimeout } from 'hook-master-react';
+
+const { start, clear } = useTimeout(callback, delay, {
+  autoInvoke: true,
+});
+```
+
+Arguments:
+
+- `callback` – function that will be called after the timer elapses
+- `delay` – number of milliseconds the timer should wait before the specified function is executed
+- `options: { autoInvoke }` - determines whether the timer should be started on mount, defaults to false
+
+Return object:
+
+- `start` - starts the timer
+- `clear` – cancels the timer
+
+## Definition
+
+```tsx
+function useTimeout(
+  callback: (...callbackParams: any[]) => void,
+  delay: number,
+  options?: {
+    autoInvoke: boolean;
+  }
+): {
+  start: (...callbackParams: any[]) => void;
+  clear: () => void;
+};
+```

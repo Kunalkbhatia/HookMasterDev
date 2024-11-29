@@ -1,0 +1,30 @@
+---
+title: useToggle
+description: Switches between true and false
+---
+
+## Usage
+
+`useToggle` implements a common state pattern – it switches boolean state.
+The hook accepts a boolean value, the first option will be used as the default value.
+The hook returns the state value and toggle function:
+
+```tsx
+import { useToggle } from '@mantine/hooks';
+
+const [value, toggle] = useToggle();
+// -> value === false
+toggle(); // -> value === true
+
+// -> value === true
+toggle(false); // value === false
+```
+
+
+## Definition
+
+```tsx
+function useToggle(
+  initialState: boolean = false
+): [boolean, (value?: boolean) => void]
+```
