@@ -1,26 +1,52 @@
-# hook-master-dev
+## Introduction
+Welcome to the official guide for installing and using the `hook-master-react` library. This library offers a collection of reusable, well-tested React hooks to streamline your development process.
 
-This is a Next.js application generated with
-[Create Fumadocs](https://github.com/fuma-nama/fumadocs).
+## Prerequisites
+Ensure you have the following installed on your system before proceeding:
 
-Run development server:
+  - Node.js: Version 14 or higher.
+  - npm: Version 6 or higher.
+  - yarn: Version 1.22 or higher (if using yarn).
 
-```bash
-npm run dev
-# or
-pnpm dev
-# or
-yarn dev
+## Installation
+
+You can install the hook-master-react package using either `npm` or `yarn`.
+
+### Usin npm
+```
+npm install hook-master-react
+```
+### Usin yarn
+```
+yarn add hook-master-react
 ```
 
-Open http://localhost:3000 with your browser to see the result.
 
-## Learn More
+### Importing hooks
+```tsx
+import { useToggle } from 'hook-master-react';
 
-To learn more about Next.js and Fumadocs, take a look at the following
-resources:
+function App() {
+  const [state, toggle] = useToggle();
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js
-  features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-- [Fumadocs](https://fumadocs.vercel.app) - learn about Fumadocs
+  return (
+    <div>
+      <p>{state ? 'ON' : 'OFF'}</p>
+      <button onClick={() => toggle()}>Toggle</button>
+    </div>
+  );
+}
+
+```
+
+## Repository Links
+
+- Source Code: Access the [source code](https://github.com/Kunalkbhatia/HookMaste) and contribute to the project.
+
+- Documentation: View the [documentation](https://github.com/Kunalkbhatia/HookMasterDev) if you want to edit the documentation.
+
+## Feedback and Contributions
+
+We welcome contributions! If you encounter issues or have feature requests, feel free to open an issue in the source code repository.
+Although our hooks in the library are well-tested, we are still looking to add more tests to ensure even more robust functionality. If you're interested, feel free to add tests for any of the hooks.
+
